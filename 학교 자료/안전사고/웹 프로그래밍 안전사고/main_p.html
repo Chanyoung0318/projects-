@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위기탈출 넘버원</title>
+    <script src="js/jquery.js"></script>
+</head>
+<style>
+.button1{
+    width: 150px;
+}
+.C{
+    text-align: center;
+}
+.Q{
+    width: 400px;
+    height: 60px;
+    text-align: center;
+}
+    </style>
+
+<body>
+    <script>
+        $(function(){
+            $(".A ").css("border" , "2px solid black" ).css("background-color","white").css("color","black").css;
+        });
+        ;
+        
+        $(".txt2").parents("div").css({"border" : "2px solid #f00"})
+
+        var ctx = myCanvas.getContext("2d");
+        function CardGame() {
+            window.open("CardGame.html", "카드 맞추기 게임")
+        }
+        function OX게임() {
+            window.open("randomOX.html", "O X 게임")
+        }
+
+    </script>
+        <div style="display: flex;">
+            <header class = A >
+                <h1 class = Q> 위기 탈출 넘버원 </h1>
+                
+                <ul>
+                    <li><a href = "가스.html">  가스 누출 사고</a></li>
+                    <li><a href = "건물.html">          건물 붕괴 사고</a></li>
+                    <li><a href = "엘리베이터.html">    엘리베이터 사고</a></li>
+                    <li><a href = "에스켈레이터.html">   에스켈레이터 사고</a></li>
+                    <li><a href = "전기.html">          전 기 사 고</a></li>
+                    <li><a href = "지진.html">          지 진 사 고</a></li>
+                    <li><a href = "전동 킥보드.html">   전동 킥보드사고</a></li>
+                    <li><a href = "압사사고.html">      압 사  사 고</a></li>
+                    <li><a href = "전염병 사고.html">        전염병 사 고</a></li>
+                    <li><a href = "물놀이.html">        물 놀 이사 고</a></li>
+                    <li><a href = "자동차.html">        자 동 차 사 고</a></li>
+                    <li><a href = "침수.html">          침 수 사 고</a></li>
+                </ul>
+                
+            </header>
+            <section class = A>
+                <h3 class = C>
+                    Games<br>
+                    <button class = "button1" onclick="CardGame()">카드 맞추기 게임</button>
+                    <button class = "button1" onclick="OX게임()">O X 게임</button>
+                    
+                </h3>
+            </section>
+            <footer>
+                
+            </footer>
+        </div>
+</body>
+
+</html>

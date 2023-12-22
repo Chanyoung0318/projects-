@@ -1,0 +1,88 @@
+
+#include <MQUnifiedsensor.h>            // mq-3는 5v
+#include <SPI.h>                        // NFC는 3.3V
+#include <MFRC522.h>                    
+
+#define Board                      ("Arduino UNO")
+#define Pin                        (A0)
+#define Type                       ("MQ-3")
+#define Voltage_Resolution         (5)
+#define ADC_Bit_Resolution         (10)
+#define RatioMQ3CleanAir           (60)
+#define RST_PIN 9 
+#define SS_PIN 10
+
+MQUnifiedsensor MQ3(Board, Voltage_Resolution, ADC_Bit_Resolution, Pin, Type);
+MFRC522 mfrc(SS_PIN, RST_PIN);
+
+int relay1 = 4; 
+int relay2 = 5; 
+int relay3 = 6;
+int button = 3; 
+
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc.PCD_Init();
+  pinMode(relay1, OUTPUT);
+  pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+
+
+  MQ3.setRegressionMethod(1); 
+  MQ3.setA(0.3934); MQ3.setB(-1.504);
+  MQ3.init(); 
+ 
+  Serial.print("Calibrating please wait.");
+  float calcR0 = 0;
+  for(int i = 1; i<=10; i ++)
+  {
+    MQ3.update(); 
+    calcR0 += MQ3.calibrate(RatioMQ3CleanAir);
+    Serial.print(".");
+  }
+  MQ3.setR0(calcR0/10);
+  Serial.println("  done!.");
+}
+
+
+void loop() {
+  delay(2000); 
+  MQ3.update();                           //mq-3
+  float mq3 = MQ3.readSensor();
+
+  if (mq3 > 0.005) {
+    digitalWrite(relay1, LOW); 
+  } else {
+    digitalWrite(relay1, HIGH);
+  }
+  Serial.println(mq3, 4);
+  delay(1000); 
+
+
+ if (! mfrc.PICC_IsNewCardPresent() || ! mfrc.PICC_ReadCardSerial() ) {     //RFID           //RFID
+   delay(500); 
+   return; 
+   }                   // 키값 In hex:  5F 67 A4 89  In dec:  95 103 164 137
+   if (mfrc.uid.uidByte[0] == 95 && mfrc.uid.uidByte[1] == 103 
+      && mfrc.uid.uidByte[2] == 164 && mfrc.uid.uidByte[3] == 137) { 
+     digitalWrite(relay2, HIGH);
+     Serial.println("on"); 
+   } else {
+       digitalWrite(relay2, LOW);
+       Serial.println("off");
+   }
+
+ 
+  while(digitalRead(button) == LOW) {  //버튼 누르시 자동차 작동
+    digitalWrite(relay3, LOW);
+  }
+  delay(500);
+  digitalWrite(relay3, HIGH);
+  Serial.println("on"); 
+  delay(5000);
+  digitalWrite(relay3, LOW);
+  Serial.println("off");
+}

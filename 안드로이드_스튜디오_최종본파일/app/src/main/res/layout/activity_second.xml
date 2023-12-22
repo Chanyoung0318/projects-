@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ProductEditActivity">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생년월일"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/edtName"/>
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="면허번호"/>
+
+        <EditText
+            android:id="@+id/edtNumber"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+
+        <Button
+            android:id="@+id/btnInit"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:text="삭제"/>
+
+        <Button
+            android:id="@+id/btnInsert"
+            android:text="입력"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSelect"
+            android:text="조회"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn1"
+            android:text="NFC"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="8">
+
+        <EditText
+            android:id="@+id/edtNameResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/edtNumberResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

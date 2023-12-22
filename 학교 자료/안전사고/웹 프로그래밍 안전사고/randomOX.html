@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OX퀴즈</title>
+</head>
+<style>
+    .button1 {
+        width: 247px;
+    }
+</style>
+<script>
+    const AllCard = ["startwindow", "가스", "건물", "에스켈레이터", "엘리베이터", "전기", "지진", "가스x", "건물x", "에스켈레이터x", "엘리베이터x", "전기x", "지진x"];
+
+    var i = 0;
+    var Answer = 0;
+    function changeTrue(Answer) {
+        if (i == 0) {
+            alert("START");
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+
+        }
+        else if (AllCard[1] && i == 1) {// 가스
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[2] && i == 2) {//건물
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[3] && i == 3) {//에스켈레이터
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[4] && i == 4) {//엘리베이터
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[5] && i == 5) {//전기
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[6] && i == 6) {//지진
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("정답입니다!!") };
+            if (Answer === 0) { alert("틀렸습니다!!") };
+
+        }
+        else if (AllCard[7] && i == 7) {//XX가스XX
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+        else if (AllCard[8] && i == 8) {//XX건물XX
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+        else if (AllCard[9] && i == 9) {//XX에스켈레이터XX
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+        else if (AllCard[10] && i == 10) {//XX엘리이터XX
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+        else if (AllCard[11] && i == 11) {//XX전기XX
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+        else if (AllCard[12] && i == 12) {//xx지진xx
+            var imgTag = document.getElementById("images");
+            i = Math.floor(Math.random() * 11) + 1;
+            imgTag.setAttribute("src", "./images/" + AllCard[i] + ".png")
+            if (Answer === 1) { alert("틀렸습니다!!") };
+            if (Answer === 0) { alert("정답입니다!!") };
+
+        }
+
+        console.log(i, AllCard[i]);
+
+    }
+    function changeFalse() {
+        if (i >= AllCard.length) {
+            i = 0;
+
+        }
+    }
+    console.log(i);
+
+</script>
+
+<body id="theBody">
+
+</body>
+<center>
+    <img id="images" src="images/startwindow.png" width="500" height="500"><br>
+    <button class="button1" onclick="changeTrue(1); "> O </button>
+    <button class="button1" onclick="changeTrue(0);"> X </button>
+</center>
+
+</html>

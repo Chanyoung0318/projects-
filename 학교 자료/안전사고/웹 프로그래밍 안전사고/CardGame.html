@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+    <title>기억력 게임</title>
+    <center>
+        <h1>기억력 게임</h1>
+
+    </center>
+</head>
+
+<style>
+    .container {
+        margin-left: 29%;
+        margin-right: 30%;
+        height: 300px;
+        width: 400px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .IMG_P {
+        height: 200px;
+        width: 200px;
+    }
+
+    .button1 {
+        width: 150px;
+    }
+
+    .button2 {
+        width: 100px;
+    }
+
+    .h {
+        height: 35px;
+    }
+</style>
+
+<body>
+    <center>
+        <canvas id="myCanvas" width=410 height=200 style="background-color: rgb(255, 255, 255) "></canvas>
+    </center>
+    <script>
+        $(function () {
+            $(".column").css("border", "1px solid black")
+        });
+        var Randarry = ["가스 누출", "건물 붕괴", "에스켈레이터", "엘리베이터", "전기 화재", "지진", "킥보드", "압사", "전염병", "자동차", "물놀이", "침수"];
+        var ctx = myCanvas.getContext("2d");
+        ctx.font = "25px Arial";
+
+        function forward() {
+            if (result) {
+                i = Math.floor(Math.random() * 12);
+                ctx.clearRect(20, 25, 400, 40)
+                ctx.fillText(Randarry[i] + "사고 예방법은?", 20, 50);
+
+            } else {
+                alert("시작버튼 먼저 누르세요");
+            }
+        }
+
+        var i = Math.floor(Math.random() * 12);
+        ctx.fillText(Randarry[i] + "사고 예방법은?", 20, 50);
+
+        var time_count = 30;
+        var score = 0;
+        var result = "";
+        ctx.fillText("남은 시간: " + Math.round(time_count), 0, 190);
+        ctx.fillText("점수: " + score + "점", 0, 150)
+        function time_remaining() {
+            ctx.clearRect(0, 130, myCanvas.width, myCanvas.height);
+            time_count--;
+            ctx.fillText("점수: " + score + "점", 0, 150)
+            ctx.fillText("남은 시간: " + Math.round(time_count), 0, 190);
+            if (time_count <= 0) {
+                result = false;
+                ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+                ctx.font = "50px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText("끝났습니다", myCanvas.width / 2, myCanvas.height / 2);
+                ctx.font = "35px Arial";
+                ctx.fillText(score + "점", 200, 150);
+            }
+        }
+        function timerset(a) {
+            if (result == false) {
+                time_count = a;
+                ctx.clearRect(120, 170, myCanvas.width, myCanvas.height);
+                ctx.fillText(Math.round(time_count), 120, 190);
+            }
+        }
+        function restart() {
+            location.reload();
+        }
+        function start() {
+            result = true;
+            setInterval(time_remaining, 1000);
+    
+        }
+        const click1 = function (location) {
+            if (result) {
+                if (location == 0 && i == 0) {
+                    alert("정답입니다.");
+                    score += 1;
+                } else if (location == 1 && i == 1) { 
+                    alert("정답입니다.");
+                    score += 1;
+                } else if (location == 2 && i == 2) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 3 && i == 3) {
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 4 && i == 4) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 5 && i == 5) {
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 6 && i == 6) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 7 && i == 7) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 8 && i == 8) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 9 && i == 9) { 
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 10 & i == 10) {
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else if (location == 11 & i == 11) {
+                    alert("정답입니다.");
+                    score += 1;
+                }
+                else {
+                    alert("틀렸습니다.")
+                    score -= 1;
+                }
+                ctx.clearRect(0, 0, myCanvas.width, myCanvas.height)
+                i = Math.floor(Math.random() * 12)
+                ctx.fillText(Randarry[i] + "사고 예방법은?", 35, 50);
+            }
+            else {
+                alert("시작버튼을 눌러주세요");
+            }
+        };
+    </script>
+    <div class="container">
+        <center>
+            <section class=h>
+                <button class=button1 onclick="forward()">다음문제</button>
+            </section>
+
+            <section>
+                <button class=button1 onclick="restart()">재시작</button>
+                <button class=button1 onclick="start(1)">시작</button>
+
+            </section>
+        </center>
+        <section>
+            <button class="button2" onclick=timerset(60)>60 </button>
+            <button class="button2" onclick=timerset(120)>120</button>
+        </section>
+
+        <div class="row">
+            <div class="column" onclick="click1(0)">
+                <img src="./images/가스c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(1)">
+                <img src="./images/건물c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(2)">
+                <img src="./images/에스켈레이터c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(3)">
+                <img src="./images/엘리베이터c.png" class="IMG_P">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" onclick="click1(4)">
+                <img src="./images/전기c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(5)">
+                <img src="./images/지진c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(6)">
+                <img src="./images/킥보드c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(7)">
+                <img src="./images/압사c.png" class="IMG_P">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" onclick="click1(8)">
+                <img src="./images/전염병c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(9)">
+                <img src="./images/자동차c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(10)">
+                <img src="./images/물놀이c.png" class="IMG_P">
+            </div>
+            <div class="column" onclick="click1(11)">
+                <img src="./images/침수c.png" class="IMG_P">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

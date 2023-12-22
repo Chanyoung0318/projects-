@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>천안 어디로가</title>
+    <style>
+        .overlay_info {border-radius: 6px; margin-bottom: 12px; float:left;position: relative; border: 1px solid #ccc; border-bottom: 2px solid #ddd;background-color:#fff;}
+        .overlay_info:nth-of-type(n) {border:0; box-shadow: 0px 1px 2px #888;}
+        .overlay_info a {display: block; background: #d95050; background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; text-decoration: none; color: #fff; padding:12px 36px 12px 14px; font-size: 14px; border-radius: 6px 6px 0 0}
+        .overlay_info a strong {background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_icon.png) no-repeat; padding-left: 27px;}
+        .overlay_info .desc {padding:14px;position: relative; min-width: 190px; height: 56px}
+        .overlay_info img {vertical-align: top;}
+        .overlay_info .address {font-size: 12px; color: #333; position: absolute; left: 80px; right: 14px; top: 24px; white-space: normal}
+        .overlay_info:after {content:'';position: absolute; margin-left: -11px; left: 50%; bottom: -12px; width: 22px; height: 12px; background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;}
+    </style>
+</head>
+<body>
+	<div id="map" style="width:100%;height:100vh;"></div>
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=52658bd1211d55e1192a4eacfd3e1edf"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(36.8156927, 127.1136868), // 지도의 중심좌표
+		        level: 8, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    };
+		// 지도를 생성한다
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+        
+        /*
+        class Person{
+            constructor()
+        }
+        */
+        /*
+        var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(36.8004193,127.1048722),
+            map: map
+        });
+        */
+        
+
+        var imageSrc = 'point.png', // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+            markerPosition = new kakao.maps.LatLng(36.8004193,127.1048722); // 마커가 표시될 위치입니다
+
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition, 
+            image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition2 = new kakao.maps.LatLng(36.80048774413239,127.10680024354886); // 카페거리
+        
+         // 마커를 생성합니다
+        var marker2 = new kakao.maps.Marker({
+        position: markerPosition2, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition3 = new kakao.maps.LatLng(36.81516752708853,127.10348082631575); // 아름드리공원
+
+         // 마커를 생성합니다
+        var marker3 = new kakao.maps.Marker({
+        position: markerPosition3, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition4 = new kakao.maps.LatLng(36.80494823403392,127.11409308525305); // 선사유적지공원
+
+         // 마커를 생성합니다
+        var marker4 = new kakao.maps.Marker({
+        position: markerPosition4, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition5 = new kakao.maps.LatLng(36.809089233128276,127.10637793646904); // 물총새공원
+
+         // 마커를 생성합니다
+        var marker5 = new kakao.maps.Marker({
+        position: markerPosition5, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition6 = new kakao.maps.LatLng(36.791668813148156,127.10082187995994); // 장재천호수공원
+
+         // 마커를 생성합니다
+        var marker6 = new kakao.maps.Marker({
+        position: markerPosition6, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition7 = new kakao.maps.LatLng(36.812923836505675,127.11089689327007); // 천안시민체육공원
+
+         // 마커를 생성합니다
+        var marker7 = new kakao.maps.Marker({
+        position: markerPosition7, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition8 = new kakao.maps.LatLng(36.799507783151284,127.10680168419846); // 빛과소금카페
+
+         // 마커를 생성합니다
+        var marker8 = new kakao.maps.Marker({
+        position: markerPosition8, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition9 = new kakao.maps.LatLng(36.81041181009956,127.10360330282822); // 한븟
+
+         // 마커를 생성합니다
+        var marker9 = new kakao.maps.Marker({
+        position: markerPosition9, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition10 = new kakao.maps.LatLng(36.819894105424176,127.10574842274342); // 능수버들공원
+
+         // 마커를 생성합니다
+        var marker10 = new kakao.maps.Marker({
+        position: markerPosition10, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition11 = new kakao.maps.LatLng(36.82802548361757,127.10447614922495); // 한들문화센터
+
+         // 마커를 생성합니다
+        var marker11 = new kakao.maps.Marker({
+        position: markerPosition11, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition12 = new kakao.maps.LatLng(36.82414092551075,127.12404408618613); // 롤킹롤러스케이트장
+
+         // 마커를 생성합니다
+        var marker12 = new kakao.maps.Marker({
+        position: markerPosition12, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition13 = new kakao.maps.LatLng(36.83295859305275,127.11932209650581); // Jaj카페
+
+         // 마커를 생성합니다
+        var marker13 = new kakao.maps.Marker({
+        position: markerPosition13, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition14 = new kakao.maps.LatLng(36.818761252394545,127.1151363080965); // 종합운동장
+
+         // 마커를 생성합니다
+        var marker14 = new kakao.maps.Marker({
+        position: markerPosition14, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition15 = new kakao.maps.LatLng(36.82356742087065,127.11641848970032); // 마치에비뉴
+
+         // 마커를 생성합니다
+        var marker15 = new kakao.maps.Marker({
+        position: markerPosition15, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition16 = new kakao.maps.LatLng(36.837035718038045,127.1197039843656); // 버드소리
+
+         // 마커를 생성합니다
+        var marker16 = new kakao.maps.Marker({
+        position: markerPosition16, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition17 = new kakao.maps.LatLng(36.822649777999516,127.14755149690542); // 천안축구센터
+
+         // 마커를 생성합니다
+        var marker17 = new kakao.maps.Marker({
+        position: markerPosition17, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition18 = new kakao.maps.LatLng(36.84877684074819,127.13668090259127); // 성성호수공원
+
+         // 마커를 생성합니다
+        var marker18 = new kakao.maps.Marker({
+        position: markerPosition18, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition19 = new kakao.maps.LatLng(36.83244995201685,127.13567658749632); // 두정 먹자골목
+
+         // 마커를 생성합니다
+        var marker19 = new kakao.maps.Marker({
+        position: markerPosition19, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition20 = new kakao.maps.LatLng(36.81361332403972,127.13867487953942); // 성정시장
+
+        
+         // 마커를 생성합니다
+        var marker20 = new kakao.maps.Marker({
+        position: markerPosition20, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition21 = new kakao.maps.LatLng(36.84041220582226,127.14986987140371); // 뷰커피
+
+         // 마커를 생성합니다
+        var marker21 = new kakao.maps.Marker({
+        position: markerPosition21, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition22 = new kakao.maps.LatLng(36.86216178592378,127.19541418156449); // 카페이숲
+
+         // 마커를 생성합니다
+        var marker22 = new kakao.maps.Marker({
+        position: markerPosition22, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition23 = new kakao.maps.LatLng(36.84875429061614,127.13670048398188); // 업성지
+
+         // 마커를 생성합니다
+        var marker23 = new kakao.maps.Marker({
+        position: markerPosition23, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition24 = new kakao.maps.LatLng(36.90286701842357,127.15892321663256); // 직산향교
+
+         // 마커를 생성합니다
+        var marker24 = new kakao.maps.Marker({
+        position: markerPosition24, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition25 = new kakao.maps.LatLng(36.90323556734032,127.16126340665603); // 직산현관아
+
+         // 마커를 생성합니다
+        var marker25 = new kakao.maps.Marker({
+        position: markerPosition25, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition26 = new kakao.maps.LatLng(36.85196711633292,127.1890333955159); // 국립 망향의동산
+
+         // 마커를 생성합니다
+        var marker26 = new kakao.maps.Marker({
+        position: markerPosition26, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition27 = new kakao.maps.LatLng(36.850636631584706,127.21994316872616); // 만일사
+
+         // 마커를 생성합니다
+        var marker27 = new kakao.maps.Marker({
+        position: markerPosition27, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition28 = new kakao.maps.LatLng(36.87559256069167,127.10185461250349); // 마정저수지
+
+         // 마커를 생성합니다
+        var marker28 = new kakao.maps.Marker({
+        position: markerPosition28, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition29 = new kakao.maps.LatLng(36.882104406036255,127.15822397521063); // 삼은저수지 생활체육공원
+
+         // 마커를 생성합니다
+        var marker29 = new kakao.maps.Marker({
+        position: markerPosition29, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition30 = new kakao.maps.LatLng(36.87594893144161,127.13126978067316); // 삼대째손두부 직산점
+
+         // 마커를 생성합니다
+        var marker30 = new kakao.maps.Marker({
+        position: markerPosition30, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition31 = new kakao.maps.LatLng(36.916950491285014,127.12979134400695); // 동순원
+
+         // 마커를 생성합니다
+        var marker31 = new kakao.maps.Marker({
+        position: markerPosition31, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition32 = new kakao.maps.LatLng(36.91273703212474,127.13657050510359); // 천안어린이체험관
+
+         // 마커를 생성합니다
+        var marker32 = new kakao.maps.Marker({
+        position: markerPosition32, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition33 = new kakao.maps.LatLng(36.943142037803355,127.13469666631266); // 봉선홍경사갈기비
+
+         // 마커를 생성합니다
+        var marker33 = new kakao.maps.Marker({
+        position: markerPosition33, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition34 = new kakao.maps.LatLng(36.89982499601429,127.13199226551524); // 북부스포츠센터
+
+         // 마커를 생성합니다
+        var marker34 = new kakao.maps.Marker({
+        position: markerPosition34, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition35 = new kakao.maps.LatLng(36.918304508554684,127.12967860816343); // 성환이화시장
+
+         // 마커를 생성합니다
+        var marker35 = new kakao.maps.Marker({
+        position: markerPosition35, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        markerPosition36 = new kakao.maps.LatLng(36.910266686733564,127.10201290625312); // 왕지봉배꽃
+
+         // 마커를 생성합니다
+        var marker36 = new kakao.maps.Marker({
+        position: markerPosition36, 
+        image: markerImage // 마커이미지 설정 
+        });
+
+        marker.setMap(map);
+        //marker1.setMap(map);
+        marker2.setMap(map);
+        marker3.setMap(map);
+        marker4.setMap(map);
+        marker5.setMap(map);
+        marker6.setMap(map);
+        marker7.setMap(map);
+        marker8.setMap(map);
+        marker9.setMap(map);
+        marker10.setMap(map);
+        marker11.setMap(map);
+        marker12.setMap(map);
+        marker13.setMap(map);
+        marker14.setMap(map);
+        marker15.setMap(map);
+        marker16.setMap(map);
+        marker17.setMap(map);
+        marker18.setMap(map);
+        marker19.setMap(map);
+        marker20.setMap(map);
+        marker21.setMap(map);
+        marker22.setMap(map);
+        marker23.setMap(map);
+        marker24.setMap(map);
+        marker25.setMap(map);
+        marker26.setMap(map);
+        marker27.setMap(map);
+        marker28.setMap(map);
+        marker29.setMap(map);
+        marker30.setMap(map);
+        marker31.setMap(map);
+        marker32.setMap(map);
+        marker33.setMap(map);
+        marker34.setMap(map);
+        marker35.setMap(map);
+        marker36.setMap(map);
+
+        var iwContent = '<div style="padding:5px;">선사 유적지 공원<br><a href="선사유적지공원.html">소개  </a><a href="선사유적지공원Information.html">정보</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+        // 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content : iwContent,
+            removable : iwRemoveable
+        });
+
+        kakao.maps.event.addListener(marker4, 'click', function() {
+            // 마커 위에 인포윈도우를 표시합니다
+            infowindow.open(map, marker4);  
+        });
+        
+        /*
+        var content = '<div class="overlay_info">';
+            content += '    <a href="https://place.map.kakao.com/17600274" target="_blank"><strong>월정리 해수욕장</strong></a>';
+            content += '    <div class="desc">';
+            content += '        <img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/place_thumb.png" alt="">';
+            content += '        <span class="address">제주특별자치도 제주시 구좌읍 월정리 33-3</span>';
+            content += '    </div>';
+            content += '</div>';
+
+            // 커스텀 오버레이가 표시될 위치입니다 
+            var position = new kakao.maps.LatLng(36.80494823403392,127.11409308525305);
+
+            // 커스텀 오버레이를 생성합니다
+            var mapCustomOverlay = new kakao.maps.CustomOverlay({
+                position: position,
+                content: content,
+                xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+                yAnchor: 1.1 // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
+            });
+
+            // 커스텀 오버레이를 지도에 표시합니다
+            mapCustomOverlay.setMap(map);
+
+            var rvContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
+            var rv = new kakao.maps.Roadview(rvContainer); //로드뷰 객체
+            var rvClient = new kakao.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+
+            //지도의 중심좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+            rvClient.getNearestPanoId(mapCenter, 50, function(panoId) {
+                rv.setPanoId(panoId, mapCenter); //panoId와 중심좌표를 통해 로드뷰 실행
+            });
+
+            kakao.maps.event.addListener(rv, 'init', function() {
+
+                // 커스텀 오버레이를 생성합니다
+                var rvCustomOverlay = new kakao.maps.CustomOverlay({
+                    position: position,
+                    content: content,
+                    xAnchor: 0.5, // 커스텀 오버레이의 x축 위치입니다. 1에 가까울수록 왼쪽에 위치합니다. 기본값은 0.5 입니다
+                    yAnchor: 0.5 // 커스텀 오버레이의 y축 위치입니다. 1에 가까울수록 위쪽에 위치합니다. 기본값은 0.5 입니다
+                });
+
+                //rvCustomOverlay.setAltitude(2); //커스텀 오버레이의 고도값을 설정합니다.(로드뷰 화면 중앙이 0입니다)
+                rvCustomOverlay.setMap(rv);
+
+                var projection = rv.getProjection(); // viewpoint(화면좌표)값을 추출할 수 있는 projection 객체를 가져옵니다.
+                
+                // 커스텀오버레이의 position과 altitude값을 통해 viewpoint값(화면좌표)를 추출합니다.
+                var viewpoint = projection.viewpointFromCoords(rvCustomOverlay.getPosition(), rvCustomOverlay.getAltitude());
+
+                rv.setViewpoint(viewpoint); //커스텀 오버레이를 로드뷰의 가운데에 오도록 로드뷰의 시점을 변화 시킵니다.
+            });
+        */
+        /*
+        var iwContent = '<div style="padding:5px;">갤러리아 백화점 센터시티</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            iwPosition = new kakao.maps.LatLng(36.8004993,127.1048722), //인포윈도우 표시 위치입니다
+            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+        // 인포윈도우를 생성하고 지도에 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            map: map, // 인포윈도우가 표시될 지도
+            position : iwPosition, 
+            content : iwContent,
+            removable : iwRemoveable
+        });
+        */
+	</script>
+</body>
+</html>
